@@ -21,7 +21,20 @@ class Residence extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'address',
+        'city',
+        'state',
+        'zip',
+        'max_housings',
+        'surface',
+        'galery'
+    ];
+    protected $casts = [
+        // 'galery' => 'array',
+        'address' => 'array'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -36,7 +49,9 @@ class Residence extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
-
+    function housings() {
+    	return $this->hasMany(Housing::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
@@ -54,4 +69,14 @@ class Residence extends Model
     | MUTATORS
     |--------------------------------------------------------------------------
     */
+    public function setGaleryAttribute($value)
+    {
+        $attribute_name = "galery";
+        $disk = "residences";
+        $destination_path = "pictures";
+
+        $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
+
+    // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
+    }
 }

@@ -15,11 +15,13 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->string('address')->nullable();
+            $table->json('address')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->string('zip')->nullable();
+            $table->string('surface')->default(1);
             $table->integer('max_housings')->default(1);
+            $table->text('galery')->nullable();
         });
     }
 
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('residence');
+        Schema::dropIfExists('residences');
     }
 };

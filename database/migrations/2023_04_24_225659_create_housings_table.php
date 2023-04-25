@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('orientation');
             $table->string('bedrooms');
             $table->string('bathrooms');
-            $table->string('surface');
+            $table->string('surface')->default(1);
             $table->string('galery');
             $table->unsignedBigInteger('residence_id')->nullable();
             $table->foreign('residence_id')

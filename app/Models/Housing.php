@@ -21,7 +21,20 @@ class Housing extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = [
+        'name',
+        'type',
+        'floor',
+        'orientation',
+        'bedrooms',
+        'bathrooms',
+        'surface',
+        'galery',
+        'residence_id'
+    ];
+    protected $casts = [
+        'galery' => 'array'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -37,6 +50,15 @@ class Housing extends Model
     |--------------------------------------------------------------------------
     */
 
+    public function residence()
+    {
+        return $this->belongsTo(Residence::class);
+    }
+
+    public function amenities()
+    {
+        return $this->belongsToMany(Amenity::class);
+    }
     /*
     |--------------------------------------------------------------------------
     | SCOPES
