@@ -20,4 +20,7 @@ Route::group([
     Route::crud('housing', 'HousingCrudController');
     Route::crud('residence', 'ResidenceCrudController');
     Route::crud('amenity', 'AmenityCrudController');
+    Route::get('charts/chart-users', 'Charts\ChartUsersChartController@response')->name('charts.chart-users.index');
+    Route::get('charts/chart-c-a', 'Charts\ChartCAChartController@response')->name('charts.chart-c-a.index');
+    Route::get('charts/chart-repartition', 'Charts\ChartRepartitionChartController@response')->name('charts.chart-repartition.index');
 }); // this should be the absolute last line of this file
