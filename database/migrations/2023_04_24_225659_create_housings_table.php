@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('type');
             $table->string('floor');
             $table->string('orientation');
-            $table->string('bedrooms');
-            $table->string('bathrooms');
-            $table->string('surface');
-            $table->string('galery');
+            $table->string('bedrooms')->default(1);
+            $table->string('bathrooms')->default(0);
+            $table->integer('surface')->default(1);
+            $table->text('galery')->nullable();
+            $table->text('description')->nullable();
+            $table->longblob('header')->nullable();
             $table->unsignedBigInteger('residence_id')->nullable();
             $table->foreign('residence_id')
                 ->references('id')

@@ -25,7 +25,15 @@ class HousingRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'name' => 'required|min:1|max:255',
+            'type' => 'required',
+            'floor' => 'required',
+            'orientation' => 'required',
+            'bedrooms' => 'required|min:0',
+            'bathrooms' => 'required|min:0',
+            'surface' => 'required|min:0',
+            'galery' => 'nullable',
+            'description' => 'nullable',
         ];
     }
 
@@ -49,7 +57,15 @@ class HousingRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'name.required'    => 'Le nom est requis',
+            'type.required'    => 'Le type est requis',
+            'floor.required'    => 'L\'étage est requis',
+            'orientation.required'    => 'L\'orientation est requise',
+            'bedrooms.required'    => 'Le nombre de chambres est requis',
+            'bathrooms.required'    => 'Le nombre de salles de bain est requis',
+            'surface.required'    => 'La surface est requise',
+            'bedrooms.min'    => 'Le nombre de chambres doit être supérieur ou égal à 0',
+            'bathrooms.min'    => 'Le nombre de salles de bain doit être supérieur ou égal à 0',
         ];
     }
 }

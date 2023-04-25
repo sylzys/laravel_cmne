@@ -79,8 +79,8 @@ class UserCrudController extends CrudController
         CRUD::addField([   // Upload
             'name'      => 'picture',
             'label'     => 'Image',
-            'type'      => 'upload',
-            'upload'    => true,
+            'type'      => 'image',
+            // 'upload'    => true,
             // optional:
         ]);
         CRUD::field('email');

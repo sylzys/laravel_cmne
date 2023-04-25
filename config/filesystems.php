@@ -52,6 +52,22 @@ return [
             'throw' => false,
         ],
 
+        'residences' => [
+            'driver' => 'local',
+            'root' => storage_path('app/residences'),
+            'url' => env('APP_URL').'/storage/residences',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
+        'housings' => [
+            'driver' => 'local',
+            'root' => storage_path('app/housings'),
+            'url' => env('APP_URL').'/storage/housings',
+            'visibility' => 'public',
+            'throw' => false,
+        ],
+
         's3' => [
             'driver' => 's3',
             'key' => env('AWS_ACCESS_KEY_ID'),
@@ -80,6 +96,8 @@ return [
     'links' => [
         public_path('storage') => storage_path('app/public'),
         public_path('users') => storage_path('app/users'),
+        public_path('residences') => storage_path('app/residences'),
+        public_path('housings') => storage_path('app/housings'),
     ],
 
 ];
