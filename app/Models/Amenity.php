@@ -21,7 +21,9 @@ class Amenity extends Model
     // protected $primaryKey = 'id';
     // public $timestamps = false;
     protected $guarded = ['id'];
-    // protected $fillable = [];
+    protected $fillable = [
+        'name'
+    ];
     // protected $hidden = [];
     // protected $dates = [];
 
@@ -36,6 +38,15 @@ class Amenity extends Model
     | RELATIONS
     |--------------------------------------------------------------------------
     */
+    public function housings()
+    {
+        return $this->belongsToMany(Housing::class, 'housings_amenities');
+    }
+
+    public function residences()
+    {
+        return $this->belongsToMany(Residence::class, 'residences_amenities');
+    }
 
     /*
     |--------------------------------------------------------------------------

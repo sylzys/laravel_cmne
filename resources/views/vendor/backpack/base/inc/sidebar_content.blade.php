@@ -5,6 +5,6 @@
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('user') }}"><i class="nav-icon la la-users-cog"></i> Users</a></li>
 <li class="nav-item"><a class="nav-link" href="{{ backpack_url('building') }}"><i class="nav-icon la la-building"></i> Résidences</a></li>
 <!-- @endif -->
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('housing') }}"><i class="nav-icon la la-question"></i> Housings</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('residence') }}"><i class="nav-icon la la-question"></i> Residences</a></li>
-<li class="nav-item"><a class="nav-link" href="{{ backpack_url('amenity') }}"><i class="nav-icon la la-question"></i> Amenities</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('housing') }}"><i class="nav-icon la la-home"></i> Logements</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('residence') }}"><i class="nav-icon la la-building"></i> Residences</a></li>
+<li class="nav-item"><a class="nav-link" href="{{ backpack_url('amenity') }}"><i class="nav-icon la la-briefcase"></i> Commodités</a></li>

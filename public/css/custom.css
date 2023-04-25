@@ -1,0 +1,26 @@
+/* HOUSING */
+
+#housing-container .housing-name,
+#residence-container .residence-name {
+    padding-top: 1em;
+}
+
+#housing-container .housing-name, #housing-container #housing-details {
+    display: inline-block;
+    width: 49%;
+}
+#housing-container #housing-details {
+    text-align: right;
+}
+#housing-container #housing-details span {
+    font-size: 2em;
+}
+
+.cta {
+    text-align: center;
+}
+#btn-residence, #btn-housing {
+    margin-top: 1em !important;
+    width: 30%;
+    margin: 0 auto;
+}
