@@ -26,7 +26,6 @@ class User extends Authenticatable
         'date_of_birth',
         'picture',
         'password',
-        'password_confirmation',
         'firstname',
         'lastname',
         'phone',
@@ -60,16 +59,14 @@ class User extends Authenticatable
     public function getFullname() {
         return $this->firstname . ' ' . $this->lastname;
     }
-    public function setPictureAttribute($value)
-    {
-        $attribute_name = "picture";
-        $disk = "users";
-        $destination_path = "pictures";
+    // public function setPictureAttribute($value)
+    // {
+    //     $attribute_name = "picture";
+    //     $disk = "users";
+    //     $destination_path = "pictures";
 
-        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
-
-    // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
-    }
+    //     $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
+    // }
 
     public function setLeaseAttribute($value)
     {
@@ -78,7 +75,13 @@ class User extends Authenticatable
         $destination_path = "leases";
 
         $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $fileName = null);
+    }
 
-    // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
+    protected static function boot()
+    {
+        parent::boot();
+        User::saving(function ($model) {
+            $model->name = $model->getFullname();
+        });
     }
 }

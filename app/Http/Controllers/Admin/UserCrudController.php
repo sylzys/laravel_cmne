@@ -73,49 +73,78 @@ class UserCrudController extends CrudController
     protected function setupCreateOperation()
     {
         CRUD::setValidation(UserRequest::class);
-
-        CRUD::field('firstname');
-        CRUD::field('lastname');
+        CRUD::field('name')->type('hidden');
+        CRUD::addField([
+            'name' => 'firstname',
+            'label' => 'Prénom',
+            'wrapper' => [
+                'class' => 'form-group col-md-4',
+            ],
+        ]);
+        CRUD::addField([
+            'name' => 'lastname',
+            'label' => 'Nom',
+            'wrapper' => [
+                'class' => 'form-group col-md-4',
+            ],
+        ]);
         CRUD::addField([   // Upload
             'name'      => 'picture',
             'label'     => 'Image',
             'type'      => 'image',
+            'upload' => true,
+            'wrapper' => [
+                'class' => 'form-group col-md-4',
+            ],
             // 'upload'    => true,
             // optional:
         ]);
-        CRUD::field('email');
-        // CRUD::addField([
-        //     'name'  => 'password',
-        //     'label' => trans('backpack::permissionmanager.password'),
-        //     'type'  => 'password',
-        //     // 'validationRules' => 'required|confirmed|size:8',
-        //     // 'validationMessages' => [
-        //     //     'required' => 'The "Password" field is required',
-        //     //     'confirmed' => 'The "Password" confirmation does not match.',
-        //     //     'size' => 'The "Password" must be at least 8 characters long.',
-        //     // ],
-
-        // ]);
-        // CRUD::addField([
-        //     'name'  => 'password_confirmation',
-        //     'label' => trans('backpack::permissionmanager.password_confirmation'),
-        //     'type'  => 'password',
-        //     // 'validationRules' => 'required|size:8',
-        //     // 'validationMessages' => [
-        //     //     'required' => 'The "Password" field is required',
-        //     //     'size' => 'The "Password" must be at least 8 characters long.',
-        //     // ],
-        // ]);
-
         CRUD::addField([
-            'name'     => 'lease',
-            'type'     => 'upload',
-            'upload'   => true,
-            'label'    => 'Lease',
+                'name' => 'email',
+                'wrapper' => [
+                    'class' => 'form-group col-md-4',
+                ],
+            ]
+        );
+        CRUD::addField([
+            'name'  => 'password',
+            'label' => 'Mot de passe',
+            'type'  => 'password',
+            'validationRules' => 'required|confirmed|size:6',
+            'validationMessages' => [
+                'required' => 'The "Password" field is required',
+                'confirmed' => 'The "Password" confirmation does not match.',
+                'size' => 'The "Password" must be at least 6 characters long.',
+            ],
             'wrapper' => [
-                'class' => 'form-group col-md-6',
+                'class' => 'form-group col-md-4',
+            ],
+
+        ]);
+        CRUD::addField([
+            'name'  => 'password_confirmation',
+            'label' => 'Confirmation du mot de passe',
+            'type'  => 'password',
+            'false' => 'true',
+            'validationRules' => 'required|same:password|size:6',
+            'validationMessages' => [
+                'required' => 'The "Password" field is required',
+                'size' => 'The "Password" must be at least 6 characters long.',
+            ],
+            'wrapper' => [
+                'class' => 'form-group col-md-4',
             ],
         ]);
+
+        // CRUD::addField([
+        //     'name'     => 'lease',
+        //     'type'     => 'upload',
+        //     'upload'   => true,
+        //     'label'    => 'Lease',
+        //     'wrapper' => [
+        //         'class' => 'form-group col-md-6',
+        //     ],
+        // ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');
