@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/admin/dashboard');
 });
 
 Route::post('/api/amenities', '\App\Http\Controllers\Api\AmenityController@index');
