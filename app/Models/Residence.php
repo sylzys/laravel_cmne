@@ -29,7 +29,9 @@ class Residence extends Model
         'zip',
         'max_housings',
         'surface',
-        'galery'
+        'galery',
+        'header',
+        'description'
     ];
     protected $casts = [
         // 'galery' => 'array',
@@ -51,6 +53,11 @@ class Residence extends Model
     */
     function housings() {
     	return $this->hasMany(Housing::class);
+    }
+
+    public function amenities()
+    {
+        return $this->belongsToMany(Amenity::class, 'residences_amenities');
     }
     /*
     |--------------------------------------------------------------------------
@@ -76,6 +83,17 @@ class Residence extends Model
         $destination_path = "pictures";
 
         $this->uploadMultipleFilesToDisk($value, $attribute_name, $disk, $destination_path);
+
+    // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
+    }
+
+    public function setHeaderAttribute($value)
+    {
+        $attribute_name = "header";
+        $disk = "residences";
+        $destination_path = "pictures";
+
+        $this->uploadFileToDisk($value, $attribute_name, $disk, $destination_path, $filename = null);
 
     // return $this->attributes[{$attribute_name}]; // uncomment if this is a translatable field
     }

@@ -99,6 +99,34 @@ class ResidenceCrudController extends CrudController
         ]
     ]);
 
+    $this->crud->addField([
+        'name' => 'header',
+        'label' => 'Image entête',
+        'type' => 'image',
+        'upload' => true,
+        "wrapper" => [
+            "class" => "form-group col-md-6"
+        ]
+    ]);
+    CRUD::addField([
+        'type'          => "select2_multiple",
+        'name'          => 'amenities',
+        'label'         => 'Commodités',
+        'ajax'          => true,
+        'data_source' => url("api/amenities"),
+        'inline_create' => [ 'entity' => 'amenity' ],
+        'wrapper' => [
+            'class' => 'form-group col-md-12',
+        ],
+    ]);
+
+    $this->crud->addField([
+        'name' => 'description',
+        'label' => 'Description',
+        "wrapper" => [
+            "class" => "form-group col-md-12"
+        ]
+    ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

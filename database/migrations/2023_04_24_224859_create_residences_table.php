@@ -22,6 +22,8 @@ return new class extends Migration
             $table->string('surface')->default(1);
             $table->integer('max_housings')->default(1);
             $table->text('galery')->nullable();
+            $table->text('description')->nullable();
+            $table->string('header')->nullable();
         });
     }
 

@@ -29,6 +29,8 @@ class HousingCrudController extends CrudController
         CRUD::setModel(\App\Models\Housing::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/housing');
         CRUD::setEntityNameStrings('logement', 'logements');
+        $this->crud->setShowView('housings.show');
+
     }
 
     /**
@@ -63,9 +65,22 @@ class HousingCrudController extends CrudController
             'label' => 'Name'
         ]);
         CRUD::addField([
+            'name' => 'residence',
+            'type' => 'relationship',
+            'label' => 'Résidence',
+            'entity' => 'residence',
+            "wrapper" => [
+                'class' => 'form-group col-md-3'
+            ]
+        ]);
+        CRUD::addField([
             'name' => 'surface',
             'type' => 'number',
-            'suffix' => 'm²'
+            'suffix' => 'm²',
+            'default' => 0,
+            "wrapper" => [
+                'class' => 'form-group col-md-3'
+            ]
         ]);
         CRUD::addField([
             'name' => 'type',
@@ -78,8 +93,9 @@ class HousingCrudController extends CrudController
             ],
             'allows_null' => false,
             'default'     => 'one',
-            'name'          => 'type', // the method on your model that defines the relationship
-            'ajax'          => true,
+            "wrapper" => [
+                'class' => 'form-group col-md-3'
+            ]
 
         ]);
         CRUD::addField([
@@ -94,9 +110,11 @@ class HousingCrudController extends CrudController
                 '4' => '4'
             ],
             'allows_null' => false,
-            'default'     => 'one',
-            'name'          => 'type', // the method on your model that defines the relationship
+            'default'     => '1',
             'ajax'          => true,
+            "wrapper" => [
+                'class' => 'form-group col-md-3'
+            ]
 
         ]);
         CRUD::addField([
@@ -111,32 +129,58 @@ class HousingCrudController extends CrudController
             ],
             'allows_null' => false,
             'default'     => 'one',
-            'name'          => 'type', // the method on your model that defines the relationship
+            'name'          => 'orientation', // the method on your model that defines the relationship
             'ajax'          => true,
-
+            "wrapper" => [
+                'class' => 'form-group col-md-4'
+            ]
         ]);
         CRUD::addField([
             'name' => 'bedrooms',
             'type' => 'number',
-            'label' => 'Nb chambres'
+            'label' => 'Nb chambres',
+            'default' => 1,
         ]);
         CRUD::addField([
             'name' => 'bathrooms',
             'type' => 'number',
-            'label' => 'Nb SdB'
+            'label' => 'Nb SdB',
+            'default' => 1,
+        ]);
+        $this->crud->addField([
+            'name' => 'galery',
+            'label' => 'Photos',
+            'type' => 'upload_multiple',
+            'multiple' => true,
+            'upload' => true,
+            "wrapper" => [
+                "class" => "form-group col-md-6"
+            ]
         ]);
         CRUD::addField([
-            'type'          => "relationship",
+            'name' => 'header',
+            'type' => 'image',
+            'upload' => true,
+            'label' => 'Image d\'entête'
+        ]);
+        CRUD::addField([
+            'type'          => "select2_multiple",
             'name'          => 'amenities',
             'label'         => 'Commodités',
-            'ajax'          => true,
+            // 'ajax'          => true,
             'data_source' => url("api/amenities"),
             'inline_create' => [ 'entity' => 'amenity' ],
             'wrapper' => [
                 'class' => 'form-group col-md-12',
             ],
         ]);
-
+        $this->crud->addField([
+            'name' => 'description',
+            'label' => 'Description',
+            "wrapper" => [
+                "class" => "form-group col-md-12"
+            ]
+        ]);
         /**
          * Fields can be defined using the fluent syntax or array syntax:
          * - CRUD::field('price')->type('number');

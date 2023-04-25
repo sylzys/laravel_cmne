@@ -28,7 +28,7 @@ class AmenityCrudController extends CrudController
     {
         CRUD::setModel(\App\Models\Amenity::class);
         CRUD::setRoute(config('backpack.base.route_prefix') . '/amenity');
-        CRUD::setEntityNameStrings('amenity', 'amenities');
+        CRUD::setEntityNameStrings('équipement', 'équipements');
     }
 
     /**
@@ -40,7 +40,7 @@ class AmenityCrudController extends CrudController
     protected function setupListOperation()
     {
 
-
+        CRUD::column('name');
         /**
          * Columns can be defined using the fluent syntax or array syntax:
          * - CRUD::column('price')->type('number');

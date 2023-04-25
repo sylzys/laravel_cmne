@@ -25,7 +25,9 @@ class ResidenceRequest extends FormRequest
     public function rules()
     {
         return [
-            // 'name' => 'required|min:5|max:255'
+            'name' => 'required|min:1|max:255',
+            'address' => 'required',
+            'max_housings' => 'required|min:0',
         ];
     }
 
@@ -49,7 +51,10 @@ class ResidenceRequest extends FormRequest
     public function messages()
     {
         return [
-            //
+            'name.required'    => 'Le nom est requis',
+            'address.required' => 'L\'adresse est requise',
+            'max_housings.required' => 'Le nombre maximum de logements est requis',
+            'max_housings.min' => 'Le nombre maximum de logements doit être supérieur à 0'
         ];
     }
 }
