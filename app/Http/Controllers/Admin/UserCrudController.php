@@ -106,35 +106,35 @@ class UserCrudController extends CrudController
                 ],
             ]
         );
-        CRUD::addField([
-            'name'  => 'password',
-            'label' => 'Mot de passe',
-            'type'  => 'password',
-            'validationRules' => 'required|confirmed|size:6',
-            'validationMessages' => [
-                'required' => 'The "Password" field is required',
-                'confirmed' => 'The "Password" confirmation does not match.',
-                'size' => 'The "Password" must be at least 6 characters long.',
-            ],
-            'wrapper' => [
-                'class' => 'form-group col-md-4',
-            ],
+        // CRUD::addField([
+        //     'name'  => 'password',
+        //     'label' => 'Mot de passe',
+        //     'type'  => 'password',
+        //     'validationRules' => 'required|confirmed|size:6',
+        //     'validationMessages' => [
+        //         'required' => 'The "Password" field is required',
+        //         'confirmed' => 'The "Password" confirmation does not match.',
+        //         'size' => 'The "Password" must be at least 6 characters long.',
+        //     ],
+        //     'wrapper' => [
+        //         'class' => 'form-group col-md-4',
+        //     ],
 
-        ]);
-        CRUD::addField([
-            'name'  => 'password_confirmation',
-            'label' => 'Confirmation du mot de passe',
-            'type'  => 'password',
-            'false' => 'true',
-            'validationRules' => 'required|same:password|size:6',
-            'validationMessages' => [
-                'required' => 'The "Password" field is required',
-                'size' => 'The "Password" must be at least 6 characters long.',
-            ],
-            'wrapper' => [
-                'class' => 'form-group col-md-4',
-            ],
-        ]);
+        // ]);
+        // CRUD::addField([
+        //     'name'  => 'password_confirmation',
+        //     'label' => 'Confirmation du mot de passe',
+        //     'type'  => 'password',
+        //     'false' => 'true',
+        //     'validationRules' => 'required|same:password|size:6',
+        //     'validationMessages' => [
+        //         'required' => 'The "Password" field is required',
+        //         'size' => 'The "Password" must be at least 6 characters long.',
+        //     ],
+        //     'wrapper' => [
+        //         'class' => 'form-group col-md-4',
+        //     ],
+        // ]);
 
         // CRUD::addField([
         //     'name'     => 'lease',
